@@ -1,0 +1,81 @@
+
+In Java, Stream is an abstraction introduced in Java 8 as part of the Stream API. It's designed to process collections of objects in a functional and declarative way.
+
+Here's a breakdown of what it is and how it's used:
+
+1. Stream Creation: You can create a stream from various data sources like collections, arrays, or even I/O resources.
+2.Intermediate Operations: Streams support various intermediate operations to process the elements. These operations are often chained together to form a pipeline. Some common intermediate operations include:
+                            filter(Predicate): Filters the elements based on a predicate.
+                            map(Function): Transforms each element using a function.
+                            sorted(): Sorts the elements.
+                            distinct(): Removes duplicates.
+3.Terminal Operations: These operations produce a result or a side-effect. Once a terminal operation is applied to a stream, the stream cannot be used again. Common terminal operations include:
+                        forEach(Consumer): Performs an action for each element.
+                        collect(Collector): Collects the elements into a collection.
+                        count(): Counts the number of elements.
+                        anyMatch(Predicate): Checks if any element matches a predicate.
+
+
+Various Example of Stream Application-
+
+Intermediate 
+
+1.  Filter() 
+  List<Product> filteredList = productList.stream()
+                                       .filter(p -> p.getProductId() != null)
+                                       .collect(Collectors.toList());
+2. Mapping:
+  
+List<String> productNames = productList.stream()
+                                       .map(Product::getName)
+                                       .collect(Collectors.toList());
+
+3.Sorting:
+    List<Product> sortedList = productList.stream()
+                                      .sorted(Comparator.comparing(Product::getProductId))
+                                      .collect(Collectors.toList());
+For descending->.sorted(Comparator.comparing(Product::getProductId).reversed())
+
+
+        // Creating a list of fruit names
+        List<String> fruits = new ArrayList<>();
+        fruits.add("apple");
+        fruits.add("banana");
+        fruits.add("orange");
+        fruits.add("strawberry");
+        fruits.add("kiwi");
+        fruits.add("grape");
+
+        // Sorting the list based on the length of fruit names from longest to shortest
+        List<String> sortedFruits = fruits.stream()
+                                          .sorted((s1, s2) -> Integer.compare(s2.length(), s1.length()))
+                                          .collect(Collectors.toList());
+
+        // Finding the longest fruit name
+        Optional<String> longestFruit = fruits.stream()
+                                              .max((s1, s2) -> Integer.compare(s1.length(), s2.length()));
+
+        // Printing the longest fruit name
+        longestFruit.ifPresent(System.out::println);
+
+
+Terminal operations - are the operations that produce a result or a side-effect. Here are some examples of terminal operations:
+
+1.collect: Collects the elements of the stream into a collection.
+
+2.count: Returns the count of elements in the stream.
+    
+  List<String> fruits = Arrays.asList("apple", "banana", "orange", "strawberry");
+
+  long count = fruits.stream()
+                    .filter(s -> s.startsWith("a"))
+                    .count();
+  System.out.println("Number of fruits starting with 'a': " + count);
+
+3. anyMatch: Checks if any element matches a given predicate.
+      boolean anyMatch = fruits.stream()
+                        .anyMatch(s -> s.contains("orange"));
+4.findFirst: Returns the first element of the stream.
+
+
+
