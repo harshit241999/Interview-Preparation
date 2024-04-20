@@ -1,1 +1,45 @@
+Exception handling in Java allows you to deal with unexpected or exceptional situations that may occur during the execution of a program.
+Java provides several keywords and constructs for exception handling, including try, catch, finally, and throw. Here's an overview of how exception handling works in Java:
 
+Exception Types:
+Java has two types of exceptions: checked exceptions and unchecked exceptions.
+
+1.Checked Exceptions: These are checked by the compiler, and you're required to handle them. Examples include IOException, SQLException, etc.
+
+2.Unchecked Exceptions: These are not checked by the compiler, and you're not required to handle them. Examples include NullPointerException, ArrayIndexOutOfBoundsException, etc.
+
+
+
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+    public static void main(String[] args) {
+
+        try {
+            // Code that might throw an exception
+            int result = 10/0;
+           // System.out.println("Result: " + result);
+            return;
+        } catch (Exception e) {
+            // Exception handling code
+            System.out.println("Error: Division by zero");
+             return;
+
+            
+        } finally {
+            // Cleanup code (optional)
+            System.out.println("why End of program");
+        }
+            System.out.println("task");
+
+    }
+}
+
+Output->
+            System.out.println("task");
+            ^
+1 error
+
+=== Code Exited With Errors ===
